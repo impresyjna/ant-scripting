@@ -15,6 +15,24 @@
             class Hashlist extends org.apache.tools.ant.Task {
                 String file
                 String fileset = "."
+
+                String fileToMd5( File aFile ) {
+                    def antx = new AntBuilder();
+                    antx.checksum( file: aFile.path, property: "result1" )
+                    return antx.project.properties.result1;
+                }
+
+                String fileToSHA1( File aFile ) {
+                    def antx = new AntBuilder();
+                    antx.checksum( file: aFile.path, algorithm:"SHA-1",  property: "result1" )
+                    return antx.project.properties.result1;
+                }
+
+                String fileToSHA256( File aFile ) {
+                    def antx = new AntBuilder();
+                    antx.checksum( file: aFile.path, algorithm:"SHA-256",  property: "result1" )
+                    return antx.project.properties.result1;
+                }
                 
                 public void execute() { 
                     def ant = new AntBuilder()
@@ -23,13 +41,14 @@
                     def scanner = ant.fileScanner {
                         fileset(dir: fileset) 
                     }
-                    def root = builder.files {
-                       
-                           for (f in scanner) {
-                           L: {
-                                path f.canonicalPath
-                            }}
-                       
+                    def root = builder {
+                       files scanner.collect { f -> 
+                       ["path":f.path.subpath(0,2),
+                        "size":f.length(),
+                        "modified":new Date(f.lastModified()).format('yyyy-MM-dd hh:mm:ss'),
+                        "md5":fileToMd5(f), 
+                        "sha-1":fileToSHA1(f), 
+                        "sha-256":fileToSHA256(f)]}                       
                     }
                     assert root instanceof Map
                     println (builder.toString())
@@ -40,11 +59,8 @@
             project.addTaskDefinition('hashlist', Hashlist)
         </groovy>
 
-        <echo>First rectangle:</echo>
-        <hashlist/>
-
         <echo>Second rectangle:</echo>
-        <hashlist fileset="build"/>
+        <hashlist fileset="."/>
 	</target>
 
 
