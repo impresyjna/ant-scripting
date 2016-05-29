@@ -15,7 +15,7 @@
             class Hashlist extends org.apache.tools.ant.Task {
                 String file
                 String fileset = "."
-
+                String checksums="md5, sha-1, sha-256"    
                 String fileToMd5( File aFile ) {
                     def antx = new AntBuilder();
                     antx.checksum( file: aFile.path, property: "result1" )
@@ -43,7 +43,7 @@
                     }
                     def root = builder {
                        files scanner.collect { f -> 
-                       ["path":f.path.subpath(0,2),
+                       ["path":new File(fileset).toURI().relativize(new File(f.path).toURI()).getPath(),
                         "size":f.length(),
                         "modified":new Date(f.lastModified()).format('yyyy-MM-dd hh:mm:ss'),
                         "md5":fileToMd5(f), 
@@ -52,7 +52,9 @@
                     }
                     assert root instanceof Map
                     println (builder.toString())
-                    
+                    def inputFile = new File(file)
+                    inputFile.write(JsonOutput.prettyPrint(builder.toString()))
+                    getCheckSums()
                 }
             }
             
@@ -60,7 +62,7 @@
         </groovy>
 
         <echo>Second rectangle:</echo>
-        <hashlist fileset="."/>
+        <hashlist file="zwiwo.json" fileset="."/>
 	</target>
 
 
