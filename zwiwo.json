@@ -2,11 +2,11 @@
     "files": [
         {
             "path": "build.xml",
-            "size": 3592,
-            "modified": "2016-05-29 02:35:00",
-            "md5": "e97689daad6c6a562d01f5af40784e4b",
-            "sha-1": "7eb61875d1494fe2f280c8ca2e3076e4e962e5a3",
-            "sha-256": "f14270faafd1645356995ea177fe4669dd4fc35b327d49924d74a81462780112"
+            "size": 3834,
+            "modified": "2016-05-29 09:41:22",
+            "md5": "bc1d61eeafd7170cdb79fbf4ef86216b",
+            "sha-1": "204a904548123e541e0464539f110b86a199dfe4",
+            "sha-256": "c3741e599b385aa6e3d9bc41179060099ab5f9b6fff02996f0824bd411e6c184"
         },
         {
             "path": "build/Hello.class",
@@ -58,11 +58,11 @@
         },
         {
             "path": "zwiwo.json",
-            "size": 1969,
-            "modified": "2016-05-29 02:33:11",
-            "md5": "555e1b836e6cedd991cd15d297941ad4",
-            "sha-1": "aa7186600638f4ae72077208573f52779cf49431",
-            "sha-256": "10ce8861f21f273159d7b868af22738c6f52090ca7bc98fd394030175782c364"
+            "size": 2797,
+            "modified": "2016-05-29 09:36:01",
+            "md5": "a163ec786aacf4ec9ba46ddce32b695a",
+            "sha-1": "0a1803db94d47dd2494931b438f74efcfe9cbf9c",
+            "sha-256": "4f4394c0aa32ead7219af0b5584fc447fe6a6940cdc3218ed4f07c6718807c98"
         }
     ]
 }
