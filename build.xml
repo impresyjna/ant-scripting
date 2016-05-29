@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="ant-scripting">
+    <property file="hashlist.default_hashes"/>
+
+    <taskdef resource="org/codehaus/groovy/antlib.xml">
+        <classpath path="lib/groovy-all-2.4.4.jar"/>
+    </taskdef>
+	
+	<target name="hashlist">
+		<groovy>
+            import org.apache.tools.ant.types.FileSet
+            import groovy.json.JsonBuilder
+            import groovy.json.JsonOutput
+
+            class Hashlist extends org.apache.tools.ant.Task {
+                String file
+                String fileset = "."
+                
+                public void execute() { 
+                    def ant = new AntBuilder()
+                    def builder = new groovy.json.JsonBuilder()
+                    // let's create a scanner of filesets
+                    def scanner = ant.fileScanner {
+                        fileset(dir: fileset) 
+                    }
+                    def root = builder.files {
+                       
+                           for (f in scanner) {
+                           L: {
+                                path f.canonicalPath
+                            }}
+                       
+                    }
+                    assert root instanceof Map
+                    println (builder.toString())
+                    
+                }
+            }
+            
+            project.addTaskDefinition('hashlist', Hashlist)
+        </groovy>
+
+        <echo>First rectangle:</echo>
+        <hashlist/>
+
+        <echo>Second rectangle:</echo>
+        <hashlist fileset="build"/>
+	</target>
+
+
+    <target name="init">
+        <mkdir dir="build"/>
+    </target>
+
+    <target name="clean" description="Cleans the project">
+        <delete dir="build"/>
+    </target>
+
+    <target name="build" depends="init">
+        <groovyc destdir="build">
+            <src path="src/groovy"/>
+            <classpath refid="ant-scripting.classpath"/>
+        </groovyc>
+    
+        <copy todir="build">
+            <fileset dir="src/groovy" excludes="**/*.groovy" />
+        </copy>
+    </target>
+</project>
