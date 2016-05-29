@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="build" name="ant-scripting">
+    <property file="hashlist.default_hashes"/>
 
     <taskdef resource="org/codehaus/groovy/antlib.xml">
         <classpath path="lib/groovy-all-2.4.4.jar"/>
@@ -15,7 +16,7 @@
             class Hashlist extends org.apache.tools.ant.Task {
                 String file
                 FileSet fileset
-                String checksums="md5, sha-1, sha-256" 
+                String checksums
 
                 public void addFileset(FileSet fileset) {
                     this.fileset = fileset
@@ -48,19 +49,21 @@
                 }
                 
                 public void execute() { 
+                    def checksums1 = (project.properties.find { key, value -> key=="checksums"}).collect{it.value}
+                    checksums = checksums1[0]
                     def ant = new AntBuilder()
                     def builder = new groovy.json.JsonBuilder()
                     // let's create a scanner of filesets
-                    DirectoryScanner ds  = fileset.getDirectoryScanner(project);
+                    DirectoryScanner ds  = fileset.getDirectoryScanner(project)
+                    String[] includedFiles = ds.getIncludedFiles()
 
-                    def root = builder {
-                       files ds.collect { f -> 
-                       ["path":new File(fileset).toURI().relativize(new File(f.path).toURI()).getPath(),
-                        "size":f.length(),
-                        "modified":new Date(f.lastModified()).format('yyyy-MM-dd hh:mm:ss')
-                        +getCheckSums(f)]}                       
+                    def root = builder{
+                       files includedFiles.collect { f -> 
+                       ["path": f,
+                       "size":new File(f).length(),
+                        "modified":new Date(new File(f).lastModified()).format('yyyy-MM-dd hh:mm:ss')]+getCheckSums(new File(f))
+                       }                   
                     }
-                    assert root instanceof Map
                     println (builder.toString())
                     def inputFile = new File(file)
                     inputFile.write(JsonOutput.prettyPrint(builder.toString()))
@@ -70,8 +73,7 @@
             project.addTaskDefinition('hashlist', Hashlist)
         </groovy>
 
-        <echo>Second rectangle:</echo>
-        <hashlist file="zad-zwiwo.json" checksums="md5,sha-256">
+        <hashlist file="zad-zwiwo.json">
             <fileset dir="." />
         </hashlist>
 

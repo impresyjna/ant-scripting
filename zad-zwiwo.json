@@ -1,5 +1,84 @@
 {
     "files": [
-        
+        {
+            "path": "build.xml",
+            "size": 3917,
+            "modified": "2016-05-29 11:21:57",
+            "md5": "47949e0e160001fde84eabc17d8ea986",
+            "sha-1": "d30df4e4b486c721d450ad20403e0047cf23838a",
+            "sha-256": "655bb41e690dc41bae121da1ac04879e1e60773105ea1b45794da3c0e142dd93"
+        },
+        {
+            "path": "build/Hello.class",
+            "size": 4527,
+            "modified": "2016-04-11 02:03:50",
+            "md5": "f38d47d75fb966acdef44b6958e757bf",
+            "sha-1": "73a9acc37a241d125ecc6dca10ca56ef2a0cdafd",
+            "sha-256": "c9b654d8d366ee450e2ea5d8f02d861409ff46a61e087335a73a4cf2329fee6e"
+        },
+        {
+            "path": "default.properties",
+            "size": 48,
+            "modified": "2016-04-11 01:35:06",
+            "md5": "a0cbdd9c948721f699257219a525aa11",
+            "sha-1": "b2e7cdd438c2733d87c7bb61184ebd41bf664760",
+            "sha-256": "92bc0930968f6a6bb669e330c5054565b1f315e791a95b09852d3f45fa7b117f"
+        },
+        {
+            "path": "hashlist.default_hashes",
+            "size": 29,
+            "modified": "2016-05-29 11:22:13",
+            "md5": "d00d2d0bb52a683a90f886ba8af70987",
+            "sha-1": "101372f1be43ff8ac03b58de6ff842adc5070465",
+            "sha-256": "fb11e6c67fb87d8e72b1c10cb7c81741cec252aaa892f280be658a3eab466b36"
+        },
+        {
+            "path": "lib/groovy-all-1.6.0.jar",
+            "size": 4392210,
+            "modified": "2016-04-11 01:35:08",
+            "md5": "69c19d4a23a94903271cd337e2187c9a",
+            "sha-1": "21453e8889d00e011ebe959e523c8e26de46fde0",
+            "sha-256": "db533e6b4027598f26f055d8a323e44cd3a2da7253be3f0ce1f1b38ec688602b"
+        },
+        {
+            "path": "lib/groovy-all-2.4.4.jar",
+            "size": 6998724,
+            "modified": "2016-05-29 01:52:11",
+            "md5": "539dd226e974464e6d044122cf258ba3",
+            "sha-1": "b22748b6cf9a38c9777792175507a679043cdd64",
+            "sha-256": "a155a03bec40a7419bbf18fd82e0d4fd0fec05289581c90d58ec501b8a5f0405"
+        },
+        {
+            "path": "local.properties",
+            "size": 0,
+            "modified": "2016-04-11 01:35:06",
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "sha-1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "sha-256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "path": "src/groovy/org/hello/Hello.groovy",
+            "size": 98,
+            "modified": "2016-04-11 01:35:08",
+            "md5": "3a302812e67e1d9945387b03e91c2dd3",
+            "sha-1": "501e82fb4bc6ce8f6171ba8eabb11b7a8329f3ba",
+            "sha-256": "a54f344bb171b5a48204a299c803ccb9fa57e71181ba682168795c11531111ea"
+        },
+        {
+            "path": "zad-zwiwo.json",
+            "size": 1928,
+            "modified": "2016-05-29 11:22:00",
+            "md5": "76fcaf0d34af77625ac3cd46db7e6450",
+            "sha-1": "8d0225c59bb8e84f2ce623ab721422ab649cada9",
+            "sha-256": "9c5713a8765404f8ef3abe03343f777e2bf7e057c0ace27089e2864253a3fa4a"
+        },
+        {
+            "path": "zwiwo.json",
+            "size": 2797,
+            "modified": "2016-05-29 09:41:27",
+            "md5": "7480bb1668d355f360964ed68680500a",
+            "sha-1": "c9df888d7d0d9dbfabc3cfde64d1cdf39d938454",
+            "sha-256": "f68e477456831beffe1a2f1e2637276a2c2b70b7772d5831a9a222033af1c841"
+        }
     ]
 }
